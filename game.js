@@ -15,13 +15,30 @@ var winningScore = 10;
 // add collectable items to the game
 function addItems() {
   items = game.add.physicsGroup();
-  createItem(375, 300, "coin");
+  createItem(100, 100, "coin");
+  createItem(200, 200, "coin");
+  createItem(300, 300, "coin");
+  createItem(400, 400, "coin");
+  createItem(500, 500, "coin");
+  createItem(600, 600, "coin");
+  createItem(150, 150, "coin");
+  createItem(250, 250, "coin");
+  createItem(350, 350, "coin");
+
 }
 
 // add platforms to the game
 function addPlatforms() {
   platforms = game.add.physicsGroup();
-  platforms.create(450, 150, "platform");
+  platforms.create(100, 100, "platform");
+  platforms.create(200, 200, "platform");
+  platforms.create(300, 300, "platform");
+  platforms.create(400, 400, "platform");
+  platforms.create(500, 500, "platform");
+  platforms.create(600, 600, "platform");
+  platforms.create(150, 150, "platform");
+  platforms.create(250, 250, "platform");
+  platforms.create(350, 350, "platform");
   platforms.setAll("body.immovable", true);
 }
 
@@ -131,7 +148,7 @@ window.onload = function () {
       jumpButton.isDown &&
       (player.body.onFloor() || player.body.touching.down)
     ) {
-      player.body.velocity.y = -400;
+      player.body.velocity.y = -500;
     }
     // when the player winw the game
     if (won) {
