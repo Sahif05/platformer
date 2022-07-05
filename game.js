@@ -11,19 +11,21 @@ var winningMessage;
 var won = false;
 var currentScore = 0;
 var winningScore = 10;
+var losingScore = -25;
 
 // add collectable items to the game
 function addItems() {
   items = game.add.physicsGroup();
-  createItem(100, 100, "coin");
-  createItem(200, 200, "coin");
-  createItem(300, 300, "coin");
-  createItem(400, 400, "coin");
-  createItem(500, 500, "coin");
-  createItem(600, 600, "coin");
   createItem(150, 150, "coin");
-  createItem(250, 250, "coin");
+  createItem(270, 230, "coin");
+  createItem(390, 300, "coin");
+  createItem(400, 120, "star");
+  createItem(500, 420, "coin");
+  createItem(600, 550, "coin");
+  createItem(320, 100, "coin");
+  createItem(250, 250, "poison");
   createItem(350, 350, "coin");
+
 
 }
 
@@ -31,14 +33,14 @@ function addItems() {
 function addPlatforms() {
   platforms = game.add.physicsGroup();
   platforms.create(100, 100, "platform");
+  platforms.create(100, 500, "platform2"); 
+  platforms.create(500, 100, "platform2");
+  platforms.create(500, 450, "platform");
+  platforms.create(200, 400, "platform2");
+  platforms.create(300, 200, "platform2");
+  platforms.create(350, 550, "platform");
   platforms.create(200, 200, "platform");
-  platforms.create(300, 300, "platform");
-  platforms.create(400, 400, "platform");
-  platforms.create(500, 500, "platform");
-  platforms.create(600, 600, "platform");
-  platforms.create(150, 150, "platform");
-  platforms.create(250, 250, "platform");
-  platforms.create(350, 350, "platform");
+  platforms.create(150, 300, "platform");
   platforms.setAll("body.immovable", true);
 }
 
@@ -57,14 +59,25 @@ function createBadge() {
   badge.animations.play("spin", 10, true);
 }
 
+
 // when the player collects an item on the screen
 function itemHandler(player, item) {
   item.kill();
-  currentScore = currentScore + 10;
-  if (currentScore === winningScore) {
-    createBadge();
+  console.log(item.key)
+  if (item.key == "coin") {
+    currentScore = currentScore + 10;
   }
-}
+
+  if (item.key =="poison"){
+    currentScore = currentScore - 25;
+  }
+
+  if (item.key == "star"){
+    currentScore = currentScore + 25;
+  }
+
+  }
+
 
 // when the player collects the badge at the end of the game
 function badgeHandler(player, badge) {
@@ -87,11 +100,14 @@ window.onload = function () {
 
     //Load images
     game.load.image("platform", "assets/platform_1.png");
+    game.load.image("platform2", "assets/platform_2.png");
 
     //Load spritesheets
-    game.load.spritesheet("player", "assets/chalkers.png", 48, 62);
+    game.load.spritesheet("player", "assets/kirby.jpg", 48, 62);
     game.load.spritesheet("coin", "assets/coin.png", 36, 44);
-    game.load.spritesheet("badge", "assets/badge.png", 42, 54);
+    game.load.spritesheet("poison", "assets/poison.png", 32, 32);
+    game.load.spritesheet("star", "assets/star.png", 32, 32);
+    
   }
 
   // initial game set up
