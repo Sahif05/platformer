@@ -103,7 +103,7 @@ window.onload = function () {
     game.load.image("platform2", "assets/platform_2.png");
 
     //Load spritesheets
-    game.load.spritesheet("player", "assets/kirby.png", 48, 62);
+    game.load.spritesheet("player", "assets/kirby.png", 63.25, 47);
     game.load.spritesheet("coin", "assets/coin.png", 36, 44);
     game.load.spritesheet("poison", "assets/poison.png", 32, 32);
     game.load.spritesheet("star", "assets/star.png", 32, 32);
